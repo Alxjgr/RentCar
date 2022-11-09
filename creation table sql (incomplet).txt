@@ -1,0 +1,54 @@
+
+DROP TABLE IF EXISTS Car ;
+ CREATE TABLE Car (
+ Matriculation VARCHAR(150) AUTO_INCREMENT NOT NULL,
+ Year INT(4), Color VARCHAR(150),
+ FOREIGN KEY (idres) REFERENCES Reservation(idres),
+ Idcategory BIGINT(50), Idmodel BIGINT(50),
+ PRIMARY KEY (Matriculation)) ENGINE=InnoDB;
+ 
+ DROP TABLE IF EXISTS Client ;
+ CREATE TABLE Client (Idclient_Client BIGINT(50) AUTO_INCREMENT NOT NULL,
+ Name VARCHAR(150), Firstname VARCHAR(150),
+ Birth DATE, Adress VARCHAR(150),
+ City VARCHAR(150),
+ FOREIGN KEY (idres) REFERENCES Reservation(idres),
+ FOREIGN KEY (idpermis) REFERENCES Licence(idpermis),
+ PRIMARY KEY (Idclient_Client)) ENGINE=InnoDB;
+ 
+ DROP TABLE IF EXISTS Reservation ;
+ CREATE TABLE Reservation (Idres_Reservation BIGINT(50) AUTO_INCREMENT NOT NULL,
+ Date_start DATE,
+ Date_end DATE, 
+ Km_start INT,
+ Km_end INT, 
+ FOREIGN KEY (Matriculation) REFERENCES Voiture(Matriculation),
+ PRIMARY KEY (Idres_Reservation)) ENGINE=InnoDB;
+ 
+ DROP TABLE IF EXISTS Categorie ;
+ 
+ CREATE TABLE Categorie (Idcategory BIGINT(50) AUTO_INCREMENT NOT NULL, 
+ Category_name VARCHAR(150),
+ PRIMARY KEY (Idcategory)) ENGINE=InnoDB; 
+ 
+ DROP TABLE IF EXISTS Licence ;
+ CREATE TABLE Licence (Idpermis_Permis VARCHAR(150) AUTO_INCREMENT NOT NULL,
+ Date_licence DATE, Young_driver BOOLEAN,
+ FOREIGN KEY (idclient) REFERENCES Client(idclient),
+ PRIMARY KEY (Idpermis_Permis)) ENGINE=InnoDB;
+ 
+ DROP TABLE IF EXISTS Fuel ; 
+ CREATE TABLE Fuel (Idfuel BIGINT(50) AUTO_INCREMENT NOT NULL,
+ Fuel_name VARCHAR(150),
+ PRIMARY KEY (Idfuel)) ENGINE=InnoDB; 
+ 
+ DROP TABLE IF EXISTS Modele ;
+ CREATE TABLE Modele (Idmodel BIGINT(50) AUTO_INCREMENT NOT NULL,
+ Power INT, 
+ Transmission_Modele VARCHAR(150),
+ Seats INT,
+ Brand VARCHAR(150), 
+ Model_name VARCHAR(150),
+ PRIMARY KEY (Idmodel)) ENGINE=InnoDB;  
+
+
