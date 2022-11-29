@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS category ;
 DROP TABLE IF EXISTS client;
 DROP TABLE IF EXISTS licence;
 
+CREATE TABLE fuel (
+ idfuel INT AUTO_INCREMENT NOT NULL PRIMARY KEY, 
+fuel_name VARCHAR(150))ENGINE=INNODB;
 
 CREATE TABLE model (
  idmodel BIGINT(50) AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -13,7 +16,9 @@ CREATE TABLE model (
  transmission VARCHAR(150),
  seats INT,
  brand VARCHAR(150), 
- model_name VARCHAR(150))ENGINE=INNODB;
+ model_name VARCHAR(150),
+ idfuel int,
+FOREIGN KEY (idfuel) REFERENCES fuel (idfuel))ENGINE=INNODB;
  
  CREATE TABLE category (
  idcategory BIGINT(50) AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -24,10 +29,6 @@ CREATE TABLE licence (
 date_licence DATE,
  young_driver BOOLEAN, 
  idclient BIGINT(50))ENGINE=INNODB;
-
-CREATE TABLE fuel (
- idfuel INT AUTO_INCREMENT NOT NULL PRIMARY KEY, 
-fuel_name VARCHAR(150))ENGINE=INNODB;
 
 CREATE TABLE client (
  idclient BIGINT(50) AUTO_INCREMENT NOT NULL PRIMARY KEY, 
@@ -47,8 +48,6 @@ year INT(4),
 color VARCHAR(150),
  idcategory BIGINT(50) , 
  idmodel BIGINT(50),
- idfuel int,
- FOREIGN KEY (idfuel) REFERENCES fuel(idfuel),
  FOREIGN KEY (Idcategory) REFERENCES category (Idcategory),
  FOREIGN KEY (Idmodel) REFERENCES model (Idmodel)
 )ENGINE=INNODB;
