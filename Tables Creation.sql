@@ -21,6 +21,7 @@ CREATE TABLE model (
  brand VARCHAR(150), 
  model_name VARCHAR(150),
  idfuel int,
+ doors int,
 FOREIGN KEY (idfuel) REFERENCES fuel (idfuel))ENGINE=INNODB;
  
  CREATE TABLE category (
