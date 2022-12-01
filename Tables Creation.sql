@@ -58,8 +58,8 @@ color VARCHAR(150),
 
 CREATE TABLE reservation (
  idres BIGINT(50) AUTO_INCREMENT NOT NULL PRIMARY KEY,
- date_start DATE,
- date_end DATE,
+ date_start DATETIME,
+ date_end DATETIME,
  km_start INT, 
  km_end INT,
  matriculation VARCHAR(150),
