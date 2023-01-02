@@ -1,0 +1,10 @@
+<p>basket works!</p>
+<ul>
+  <li *ngFor="let orderItem of orderItems">
+    {{orderItem.product.name}} quantity: {{orderItem.quantity}}
+  </li>
+
+  <button (click)="requeteServeur()">Passer la commande</button>
+  
+</ul>
+
